@@ -22,9 +22,13 @@ def new_game():
         for el in options[questions_num]:
             print(el)
         print("_________________")
-        guess = input("Please enter answer (A, B, C, D)").upper()
-        if guess != "A" and guess != "B" and guess != "C" and guess != "D":
-            pass
+        while True:
+            guess = input("Please enter answer (A, B, C, D)").upper()
+            if guess != "A" and guess != "B" and guess != "C" and guess != "D":
+                print("Enter only A, B, C, D")
+                print("_______________")
+            else:
+                break
         guesses.append(guess)
         correct_answers += check_answer(questions.get(key), guess)
         questions_num += 1
@@ -47,7 +51,12 @@ def display_score(correct_ans, guesses):
 
 
 def play_again():
-    response = input()
+    while True:
+        response = input("Do you want to play again? (YES OR NO)").upper()
+        if response != "YES" and response != "NO":
+            print("Enter only YES or NO")
+        else:
+            break
     if response == "YES":
         return True
     elif response == "NO":
@@ -61,3 +70,4 @@ def main():
 
 
 new_game()
+main()
